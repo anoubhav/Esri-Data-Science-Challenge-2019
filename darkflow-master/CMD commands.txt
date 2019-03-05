@@ -1,0 +1,26 @@
+------Tiny YOLOv2:
+python flow --model cfg/yolov2-tiny-voc.cfg --load bin/tiny-yolo-voc.weights --train --annotation training_data/labels --dataset training_data/images --gpu 1.0 --epoch 400 --batch 16 --save 500
+
+
+------YOLO v2:
+python flow --model cfg/yolo-2c.cfg --load bin/yolo.weights --train --annotation training_data/labels --dataset training_data/images --gpu 1.0 --epoch 400 --batch 2 --save 500
+
+
+------Predict image+bbox using YOLOv2:
+python flow --imgdir test_data_images/images --model cfg/yolo-2c.cfg --load -1 --gpu 1.0 --threshold 0.1
+
+python flow --imgdir train_subset/images --model cfg/yolo-2c.cfg --load bin/yolo.weights --gpu 1.0 --threshold 0.1
+
+------Predict image+bbox using Tiny YOLOv2:
+python flow --imgdir test_data_images/images --model cfg/yolov2-tiny-voc-2c.cfg --load -1 --gpu 1.0 --threshold 0.1
+
+------Predict json files add --json
+
+------ON SUBSET- Tiny YOLOv2:
+
+python flow --model cfg/yolov2-tiny-voc.cfg --load bin/tiny-yolo-voc.weights --train --annotation train_subset/labels --dataset train_subset/images --gpu 1.0 --epoch 400 --batch 16 --save 1000 
+
+------Train subset:
+python flow --imgdir train_subset/images --model cfg/yolo-2c.cfg --load -1 --gpu 1.0 --threshold 0.1
+python flow --imgdir train_subset/images --model cfg/yolov2-tiny-voc.cfg --load -1 --gpu 1.0 --threshold 0.1
+python flow --imgdir train_subset/images --model cfg/yolov3-tiny-2c.cfg --load bin/yolov3-tiny.weights --gpu 1.0 --threshold 0.1

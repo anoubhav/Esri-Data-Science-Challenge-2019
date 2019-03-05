@@ -12,6 +12,9 @@ training_data
 sample_img/*.jpg
 !sample_img/sample_*.jpg
 sample_img/out/*
+sample_img
+preview.png
+.gitignore
 
 # Annotated test results
 results/
@@ -20,7 +23,7 @@ results/
 backup/
 tfnet/yolo/parse-history.txt
 tfnet/yolo/*.parsed
-*.txt
+
 !requirements*.txt
 *.pb
 /profile
